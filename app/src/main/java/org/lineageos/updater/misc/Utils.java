@@ -177,7 +177,10 @@ public class Utils {
         String device = SystemProperties.get(Constants.PROP_NEXT_DEVICE,
                 SystemProperties.get(Constants.PROP_DEVICE));
 
-        String serverUrl = context.getString(R.string.updater_server_url);
+        boolean hasGMS = SystemProperties.getBoolean("with_google_apps", false);
+
+        int urlResId = hasGMS ? R.string.updater_server_url : R.string.updater_server_url_vanilla;
+        String serverUrl = context.getString(urlResId);
 
         return serverUrl.replace("{device}", device);
     }
