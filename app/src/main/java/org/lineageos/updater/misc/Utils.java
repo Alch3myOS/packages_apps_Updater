@@ -174,16 +174,11 @@ public class Utils {
     }
 
     public static String getServerURL(Context context) {
-        String device = SystemProperties.get(Constants.PROP_NEXT_DEVICE,
-                SystemProperties.get(Constants.PROP_DEVICE));
-
-        boolean hasGMS = SystemProperties.getBoolean("with_google_apps", false);
-
-        int urlResId = hasGMS ? R.string.updater_server_url : R.string.updater_server_url_vanilla;
-        String serverUrl = context.getString(urlResId);
-
-        return serverUrl.replace("{device}", device);
-    }
+    String device = SystemProperties.get(Constants.PROP_NEXT_DEVICE,
+            SystemProperties.get(Constants.PROP_DEVICE));
+    String serverUrl = context.getString(R.string.updater_server_url);
+    return serverUrl.replace("{device}", device);
+}
 
     public static String getUpgradeBlockedURL(Context context) {
         String device = SystemProperties.get(Constants.PROP_NEXT_DEVICE,
