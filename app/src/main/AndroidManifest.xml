@@ -63,6 +63,16 @@
             </intent-filter>
         </receiver>
 
+        <!-- The setup wizard sets how often to check for updates -->
+        <receiver
+            android:name=".SetupPreferencesReceiver"
+            android:exported="true"
+            android:permission="android.permission.WRITE_SECURE_SETTINGS">
+            <intent-filter>
+                <action android:name="org.lineageos.updater.action.SET_AUTO_UPDATES_CHECK_INTERVAL" />
+            </intent-filter>
+        </receiver>
+
         <receiver android:name=".UpdatesCheckReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
